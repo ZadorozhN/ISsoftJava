@@ -43,4 +43,8 @@ public class Locomotive extends Wagon {
 
         log.info("Driver has been removed");
     }
+
+    public Driver getDriver(){
+        return driver.toBuilder().build();
+    }
 }

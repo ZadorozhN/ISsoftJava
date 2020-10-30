@@ -2,10 +2,11 @@ package model;
 
 import human.Driver;
 import org.junit.jupiter.api.Test;
-
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
 
 class LocomotiveTest {
     public static final int LEGAL_DRIVER_EXPERIENCE = 5;
@@ -64,5 +65,11 @@ class LocomotiveTest {
     void removeNullDriverTest() {
         Locomotive locomotive = Locomotive.of(LEGAL_WAGON_ID);
         assertDoesNotThrow(() -> locomotive.removeDriver());
+    }
+
+    @Test
+    void getDriverTest(){
+        Locomotive locomotive = Locomotive.of(LEGAL_DRIVER, LEGAL_WAGON_ID);
+        assertThat(locomotive.getDriver().getId(), equalTo(LEGAL_DRIVER.getId()));
     }
 }

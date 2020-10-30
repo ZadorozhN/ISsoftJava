@@ -135,5 +135,4 @@ class CargoWagonTest {
         assertNull(secondCargoWagon.nextWagon);
         assertNull(cargoWagon.previousWagon);
     }
-
 }

@@ -1,5 +1,6 @@
 package model;
 
+import com.google.common.collect.ImmutableList;
 import human.Passenger;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
@@ -47,5 +48,9 @@ public class PassengerWagon extends Wagon {
         }
 
         log.info("User hasn't been found");
+    }
+
+    public ImmutableList<Passenger> getPassengers(){
+        return new ImmutableList.Builder<Passenger>().addAll(passengers).build();
     }
 }

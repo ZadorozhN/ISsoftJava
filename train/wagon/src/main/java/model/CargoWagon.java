@@ -1,5 +1,7 @@
 package model;
 
+import com.google.common.collect.ImmutableList;
+import human.Passenger;
 import item.Cargo;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
@@ -48,5 +50,9 @@ public class CargoWagon extends Wagon {
         }
 
         log.info("Cargo hasn't been found");
+    }
+
+    public ImmutableList<Cargo> getCargos(){
+        return new ImmutableList.Builder<Cargo>().addAll(cargos).build();
     }
 }

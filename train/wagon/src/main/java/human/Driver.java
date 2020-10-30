@@ -14,7 +14,7 @@ public class Driver extends User {
 
     private int experience;
 
-    @Builder
+    @Builder(toBuilder = true)
     public Driver(int experience, String id, String name, String lastName, int age) {
         super(id, name, lastName, age);
         checkArgument(experience >= MIN_EXPERIENCE && experience < age - WORKING_AGE);
