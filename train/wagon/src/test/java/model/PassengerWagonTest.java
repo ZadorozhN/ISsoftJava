@@ -3,8 +3,9 @@ package model;
 import human.Passenger;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.engine.execution.JupiterEngineExecutionContext;
-
 import java.util.UUID;
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -43,6 +44,14 @@ class PassengerWagonTest {
     void addPassengerTest() {
         PassengerWagon passengerWagon = PassengerWagon.builder().id(LEGAL_ID).capacity(LEGAL_CAPACITY).build();
         assertDoesNotThrow(() -> passengerWagon.addPassenger(LEGAL_PASSENGER));
+    }
+
+    @Test
+    void getPassengerTest(){
+        PassengerWagon passengerWagon = PassengerWagon.builder().id(LEGAL_ID).capacity(LEGAL_CAPACITY).build();
+        passengerWagon.addPassenger(LEGAL_PASSENGER);
+        assertThat(passengerWagon.getPassenger(LEGAL_TICKET_ID).getTicketId(), equalTo(LEGAL_PASSENGER.getTicketId()));
+        assertThat(passengerWagon.getPassenger(LEGAL_PASSENGER_ID).getId(), equalTo(LEGAL_PASSENGER.getId()));
     }
 
     @Test

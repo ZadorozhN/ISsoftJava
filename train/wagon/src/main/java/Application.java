@@ -6,7 +6,6 @@ import model.CargoWagon;
 import model.Locomotive;
 import model.PassengerWagon;
 import model.Wagon;
-
 import java.util.UUID;
 
 @Slf4j

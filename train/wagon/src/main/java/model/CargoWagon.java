@@ -52,6 +52,19 @@ public class CargoWagon extends Wagon {
         log.info("Cargo hasn't been found");
     }
 
+    public Cargo getCargo(String id){
+        checkNotNull(id);
+        for(int i = 0; i < cargos.size(); i++){
+            if(cargos.get(i).getId() == id){
+                log.info("Cargo has been found");
+                return cargos.get(i);
+            }
+        }
+
+        log.info("Cargo hasn't been found");
+        return null;
+    }
+
     public ImmutableList<Cargo> getCargos(){
         return new ImmutableList.Builder<Cargo>().addAll(cargos).build();
     }

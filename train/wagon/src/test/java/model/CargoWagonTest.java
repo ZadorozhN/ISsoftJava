@@ -7,6 +7,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
 
 class CargoWagonTest {
     public static final int LEGAL_CAPACITY = 10;
@@ -41,6 +43,13 @@ class CargoWagonTest {
     void addCargoTest() {
         CargoWagon cargoWagon = CargoWagon.builder().carryingCapacity(LEGAL_CAPACITY).id(LEGAL_ID).build();
         assertDoesNotThrow(() -> cargoWagon.addCargo(LEGAL_CARGO));
+    }
+
+    @Test
+    void getCargoTest(){
+        CargoWagon cargoWagon = CargoWagon.builder().carryingCapacity(LEGAL_CAPACITY).id(LEGAL_ID).build();
+        cargoWagon.addCargo(LEGAL_CARGO);
+        assertThat(cargoWagon.getCargo(LEGAL_CARGO_ID).getId(), equalTo(LEGAL_CARGO.getId()));
     }
 
     @Test

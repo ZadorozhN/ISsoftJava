@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import human.Passenger;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +47,31 @@ public class PassengerWagon extends Wagon {
         }
 
         log.info("User hasn't been found");
+    }
+
+    public Passenger getPassenger(int tickedId){
+        for(int i = 0; i < passengers.size(); i++){
+            if(passengers.get(i).getTicketId() == tickedId){
+                log.info("User has been found");
+                return passengers.get(i);
+            }
+        }
+
+        log.info("User hasn't been found");
+        return null;
+    }
+
+    public Passenger getPassenger(String id){
+        checkNotNull(id);
+        for(int i = 0; i < passengers.size(); i++){
+            if(passengers.get(i).getId() == id){
+                log.info("User has been found");
+                return passengers.get(i);
+            }
+        }
+
+        log.info("User hasn't been found");
+        return null;
     }
 
     public ImmutableList<Passenger> getPassengers(){
